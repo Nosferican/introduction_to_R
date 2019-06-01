@@ -35,6 +35,3 @@ This lecture will cover the following topics:
     - `c`
     - `getElement` / `[` / `[[`
     - coerce methods (e.g., `as.vector`)
-
-
-  
