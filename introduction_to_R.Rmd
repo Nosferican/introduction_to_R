@@ -227,13 +227,6 @@ summary(object = x)
 table(origininal_object = x)
 x[2:5] <- 1L
 table(modified_object = x)
-df <- data.frame(table(modified_object = x))
-ggplot(data = df, mapping = aes(x = modified_object, weight = Freq)) +
-  geom_histogram(stat = "count") +
-  labs(title = "Histogram of modified vector",
-       x = "Value",
-       y = "Count") +
-  theme(plot.title = element_text(hjust = 0.5))
 x[11] <- NA
 typeof(x)
 sort(x = x, decreasing = TRUE, na.last = TRUE) # default values TRUE and NA
@@ -241,6 +234,8 @@ x[13] <- "A"
 x
 is.vector(x = x)
 ```
+
+Matrices
 
 ```{r matrix}
 x <- matrix(data = 1:16,
@@ -255,6 +250,8 @@ table(x)
 x[3, 2] <- NA
 x
 ```
+
+Arrays
 
 ```{r array}
 x <- array(data = 1:3, dim = c(2L, 4L, 3L))
@@ -304,8 +301,15 @@ names(x = x)
 One last example includes categorical or factor variables
 
 ```{r}
-x <- as_factor(x = rep(x = letters[1:5], 10))
+set.seed(seed = 0L)
+x <- as_factor(x = sample(x = letters[1:5], size = 100L, replace = TRUE))
 str(x)
 x[10L]
 levels(x = x)
+ggplot(mapping = aes(x = x)) +
+  geom_bar() +
+  labs(title = "Histogram",
+       x = "Category",
+       y = "Count") +
+  theme(plot.title = element_text(hjust = 0.5))
 ```
